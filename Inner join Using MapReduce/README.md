@@ -10,13 +10,13 @@
 #### Input Format (instagram_4m.csv) : -
 [UserId, PhotoId, Filter, Likes]
 
-![File1.png](File1.png)
+![png](File1.png)
 
 
 #### Input Format (instagram_time.csv) : -
 [PhotoId, CreatedDtTime]
 
-![file2.png](file2.png)
+![png](file2.png)
 
 #### First Mapper Function
 * Read and parse file 1 using this mapper.
@@ -102,4 +102,4 @@
 
 ### Output File: -
 [PhotoId, CreatedDt, Likes]
-![outputfile.png](outputfile.png)
+![png](outputfile.png)
