@@ -24,7 +24,7 @@
 * A label Table1 is attached with values so that it helps us to make necessery calculations in Reducer.
 
  
-		public void map(Object key, Text value, Context context						//Map function to parse 1st file
+		public void map(Object key, Text value, Context context				//Map function to parse 1st file
                  ) throws IOException, InterruptedException {
 		   String record = value.toString();
 		   String[] parts= record.split(",");
@@ -37,7 +37,7 @@
 * 1st column (index 0) is taken as key and 2nd column (index 1) is taken as value.
 * A label Table2 is attached with values so that it helps us to make necessery calculations in Reducer.
 
-		public void map(Object key, Text value, Context context)					//Map function to parse 2nd file
+		public void map(Object key, Text value, Context context)			//Map function to parse 2nd file
 				throws IOException, InterruptedException {
 			   String record = value.toString();
 			   String[] parts= record.split(",");
@@ -63,18 +63,19 @@
 			for (Text t: values){
 				String parts[] = t.toString().split("\t"); 
 				if(parts[0].equals("Table1")){
-                        flag+=1;										   //Flags are used to ensure record is present 
-                                                                             in both the files
+                        flag+=1;						//Flags are used to ensure record is present 
+                                                                             	in both the files
 					likes= parts[1];
 				}else if(parts[0].equals("Table2")){
 					flag+=1;
 					photoId = key.toString();
 					createdDt=parts[1];
-				}
+				}										
+										//Context.write inside for loop to ensure
+                                                                               both 1-1 and 1-many join cases are handled
 				if(flag==2){
 					String str = String.format("%s\t%s",createdDt,likes);
-					context.write(new Text(photoId),new Text(str));		       //Context.write inside for loop to ensure
-                                                                               both 1-1 and 1-many join cases are handled
+					context.write(new Text(photoId),new Text(str));		       
 				}
 			}
 
