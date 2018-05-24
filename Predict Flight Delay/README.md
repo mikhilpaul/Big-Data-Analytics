@@ -7,4 +7,4 @@
 
 #### Some Interesting Rules that Were Extracted From Decision Tree : -
 
-![jpeg](Decision_Tree.JPEG)
+![jpeg](Decision_Tree.jpeg)
